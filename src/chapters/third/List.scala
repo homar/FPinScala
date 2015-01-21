@@ -1,4 +1,4 @@
-package chapters.second
+package chapters.third
 
 import scala.annotation.tailrec
 
