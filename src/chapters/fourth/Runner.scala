@@ -18,22 +18,22 @@ object Runner {
       }
     }
 
-    println(extract(optSome))
-    println(extract(optNone))
+    require(extract(optSome)=="1")
+    require(extract(optNone)==":(")
 
-    println(optSome  getOrElse ":)")
-    println(optNone getOrElse ":(")
+    require((optSome  getOrElse ":)") == "1")
+    require((optNone.getOrElse(":(")) == ":(")
 
-    println(extract(optSome.flatMap(sres)))
-    println(extract(optSome.flatMap(sres2)))
-    println(extract(optNone.flatMap(sres)))
+    require(extract(optSome.flatMap(sres)) == "5")
+    require(extract(optSome.flatMap(sres2)) == ":(")
+    require(extract(optNone.flatMap(sres)) == ":(")
 
-    println(extract(optSome orElse optNone))
-    println(extract(optNone orElse optSome))
+    require(extract(optSome orElse optNone) == "1")
+    require(extract(optNone orElse optSome) == "1")
 
-    println(extract(optSome2 filter (x => x == 5)))
-    println(extract(optSome2 filter (x => x == 4)))
-    println(extract(optNone filter(_ => true)))
+    require(extract(optSome2 filter (x => x == 5)) == "5")
+    require(extract(optSome2 filter (x => x == 4)) == ":(")
+    require(extract(optNone filter(_ => true)) == ":(")
   }
 
 }
