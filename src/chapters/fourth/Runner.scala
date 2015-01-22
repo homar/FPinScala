@@ -34,6 +34,19 @@ object Runner {
     require(extract(optSome2 filter (x => x == 5)) == "5")
     require(extract(optSome2 filter (x => x == 4)) == ":(")
     require(extract(optNone filter(_ => true)) == ":(")
+
+    import OtherFunctions._
+
+    require(extract(mean(List(1.0,2.0,3.0))) == "2.0")
+
+    require(extract(variance(List(1.0,2.0,3.0))) == "0.6666666666666666")
+
+    require(extract(variance(List())) == ":(")
+
+    require(traverse(List("1", "2", "3"))(x => Try(x.toInt)) == Some(List(1, 2 , 3)))
+    require(traverse(List("1", "s", "3"))(x => Try(x.toInt)) == None)
+    require(traverse2(List("1", "2", "3"))(x => Try(x.toInt)) == Some(List(1, 2, 3)))
+    require(traverse2(List("1", "s", "3"))(x => Try(x.toInt)) == None)
   }
 
 }
