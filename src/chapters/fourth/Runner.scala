@@ -35,7 +35,7 @@ object Runner {
     require(extract(optSome2 filter (x => x == 4)) == ":(")
     require(extract(optNone filter(_ => true)) == ":(")
 
-    import OtherFunctions._
+    import OtherFunctionsOption._
 
     require(extract(mean(List(1.0,2.0,3.0))) == "2.0")
 
