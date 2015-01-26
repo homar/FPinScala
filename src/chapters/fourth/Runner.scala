@@ -47,6 +47,7 @@ object Runner {
     require(traverse(List("1", "s", "3"))(x => Try(x.toInt)) == None)
     require(traverse2(List("1", "2", "3"))(x => Try(x.toInt)) == Some(List(1, 2, 3)))
     require(traverse2(List("1", "s", "3"))(x => Try(x.toInt)) == None)
+
   }
 
 }
