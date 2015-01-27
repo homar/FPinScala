@@ -26,6 +26,11 @@ object StreamRunner {
     println(constant(5).take(10).toList)
     println(from(1).take(10).toList)
     println(fibs().take(10).toList)
+
+    val s2 = Stream(1,2,3)
+    require(s.startsWith(s2))
+
+    require(s.tails.map(_.toList).toList == List(List(1, 2, 3, 4, 5, 6), List(2, 3, 4, 5, 6), List(3, 4, 5, 6), List(4, 5, 6), List(5, 6), List(6), List()))
   }
 
 }
